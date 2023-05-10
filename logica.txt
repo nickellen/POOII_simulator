@@ -1,0 +1,55 @@
+* avião tem fila
+
+1) cria_fila_vazia
+
+FAV = [null, null, null, null, null, null, null, null, null]
+
+2) cria a fila de embarque cheia de gente, com posições finais de onde vão sentar
+
+FMEB = [(João, 12F), (Maria, 10F), (Jorge, 8F), (Tiago, 6F), (Paula, 4F), ...]
+
+3) insere a primeira pessoa da fila de embarque na posição zero da fila do avião
+
+FAV = [(João, 12F), null, null, null, null, null, null, null, null] (ENTROU JOÃO NA FILA DO AVIÃO)
+FMEB = [(Maria, 10F), (Jorge, 8F), (Tiago, 6F), (Paula, 4F), ...] (SAIU JOÃO)
+
+4) enquanto houver pessoas na fila de embarque, ou enquanto houver pessoas na fila do avião:
+
+    para cada posição da fila: 
+        a pessoa naquela posição está no lugar final dela?
+        se sim...
+            a pessoa tem mala? se sim...
+               a pessoa já guardou a mala? se sim...
+                  vai sentar, e sai da fila 
+               se não...
+                  coloca a mala no lugar
+            se não tem mala...
+               vai sentar, e sai da fila
+        se não... 
+            é possível para a pessoa andar? (se não tem alguém na frente) se sim...
+                pessoa.anda 1 posição
+            se não...
+                passa a fez, fica esperando e não faz nada
+        
+        se, depois de toda a movimentação (final do tick), a posição 0 estiver livre:
+            existe mais alguém na fila de embarque?
+                se sim, coloca essa pessoa na posição 0 da fila, e remove a pessoa da fila de embarque
+
+FIM
+
+diagrama de estados da pessoa
+
+@startuml
+
+skin rose
+
+[*] --> ComecoDaFila
+ComecoDaFila --> AndandoNaFila
+AndandoNaFila --> AndandoNaFila
+AndandoNaFila --> ChegouNoLugar
+ChegouNoLugar --> Sentou : Não \n tem mala
+ChegouNoLugar --> ColocaMala : Tem\n Mala
+ColocaMala -> Sentou
+Sentou --> [*]
+
+@enduml

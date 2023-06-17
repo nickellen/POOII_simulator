@@ -1,5 +1,6 @@
 # pooII
 
-Video simulador: https://www.youtube.com/watch?v=CsRfFhrNtho&t=26s
-
-Artigo: https://arxiv.org/pdf/1108.5211v1.pdf
+Projeto de simulação de embarques de passageiros em um avião, desenvolvido na Disciplina de Programação Orientada a Objetos.
+Desenvolvido por: Fernanda Riberio Martins
+                  José Mateus Amaral de Mirando
+                  Monique Ellen dos Santos
